@@ -3,11 +3,11 @@
 import base64
 from typing import TypeVar
 
-from api.v1.auth import auth
+from api.v1.auth.auth import Auth
 from models.user import User
 
 
-class BasicAuth(auth):
+class BasicAuth(Auth):
     """Basic auth class"""
 
     def extract_base64_authorization_header(self,
