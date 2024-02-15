@@ -4,8 +4,6 @@ Module of auth views
 """
 from typing import List, TypeVar
 
-from flask import request
-
 
 class Auth:
     """ Auth Class"""
@@ -32,4 +30,13 @@ class Auth:
     def current_user(self, request=None) -> TypeVar('User'):
         """ Returns the current user"""
 
+        return None
+
+    def session_cookie(self, request=None):
+        """
+        session cookie
+        """
+        if request is not None:
+            cookie = getenv('SESSION_NAME')
+            return request.cookies.get(cookie)
         return None
