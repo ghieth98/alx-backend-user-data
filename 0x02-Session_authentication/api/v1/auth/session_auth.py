@@ -39,10 +39,10 @@ class SessionAuth(Auth):
         """
         current user
         """
-        cookie = self.session_cookie(request)
+        session_cookie = self.session_cookie(request)
 
-        if cookie is None:
+        if session_cookie is None:
             return None
 
-        user_id = self.user_id_for_session_id(cookie)
+        user_id = self.user_id_for_session_id(session_cookie)
         return User.get(user_id)
