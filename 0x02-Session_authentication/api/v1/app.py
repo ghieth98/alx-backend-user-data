@@ -29,11 +29,12 @@ elif getenv('AUTH_TYPE'):
 def before_request() -> None:
     """runs before any request"""
     auth_list = ['/api/v1/status/', '/api/v1/unauthorized/',
-                 '/api/v1/forbidden/']
+                 '/api/v1/forbidden/', '/api/v1/auth_session/login/']
 
     if auth:
         if auth.require_auth(request.path, auth_list):
-            if not auth.authorization_header(request):
+            if not auth.authorization_header(
+                    request) and not auth.session_cookie(request):
                 abort(401)
             if not auth.current_user(request):
                 abort(403)
