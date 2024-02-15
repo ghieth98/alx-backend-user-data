@@ -2,6 +2,7 @@
 """
 Module of auth views
 """
+from os import getenv
 from typing import List, TypeVar
 
 
