@@ -1,4 +1,4 @@
-#!/usr/bin/enn python3
+#!/usr/bin/env python3
 """Basic auth class"""
 import base64
 from typing import TypeVar
