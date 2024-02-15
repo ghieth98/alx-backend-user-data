@@ -27,7 +27,7 @@ class SessionAuth(Auth):
 
     def user_id_for_session_id(self, session_id: str = None) -> str:
         """
-        Get user id for for the session
+        Get user id for the session
         """
 
         if session_id is None or type(session_id) is not str:
