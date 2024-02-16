@@ -3,6 +3,7 @@
 
 from datetime import datetime, timedelta
 from os import getenv
+
 from .session_auth import SessionAuth
 
 
@@ -18,9 +19,7 @@ class SessionExpAuth(SessionAuth):
         session_id = super().create_session(user_id)
         if not session_id:
             return None
-        session_dictionary = {}
-        session_dictionary['user_id'] = user_id
-        session_dictionary['created_at'] = datetime.now()
+        session_dictionary = {'user_id': user_id, 'created_at': datetime.now()}
 
         self.user_id_by_session_id[session_id] = session_dictionary
         return session_id
