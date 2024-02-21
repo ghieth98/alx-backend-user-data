@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 """DB module
 """
+from typing import Type
+
 from sqlalchemy import create_engine
+from sqlalchemy.exc import InvalidRequestError, NoResultFound
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm.session import Session
 
@@ -35,3 +38,14 @@ class DB:
         self._session.add(new_user)
         self._session.commit()
         return new_user
+
+    def find_user_by(self, **kwargs) -> Type[User]:
+        """Returns teh first row find in users table"""
+        if not kwargs:
+            raise InvalidRequestError()
+
+        user = self._session.query(User).filter_by(**kwargs).first()
+
+        if user is None:
+            raise NoResultFound()
+        return user
