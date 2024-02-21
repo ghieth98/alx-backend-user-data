@@ -4,9 +4,7 @@
 from typing import Type
 
 from sqlalchemy import create_engine
-from sqlalchemy.exc import InvalidRequestError, NoResultFound
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.orm.session import Session
+from sqlalchemy.orm.exc import InvalidRequestError, NoResultFound
 
 from user import Base, User
 
